@@ -18,14 +18,14 @@ Los cuales, variando por la acción a realizar, tienen el siguiente flujo de des
 # Uso
 
 Para usar esta interfaz solo necesitamos incluir en nuestro html el siguiente archivo Javascript.
-```
+```html
 <script src="https://cnd/eda-interface.js"></script>
 ```
 
 Una vez importado y incluido este script, podemos hacer uso dentro de nuestro html, cómo un elemento 
 normal, de la Interfaz de Easy Digital Assets. Un Ejemplo básico de validar activos digitales.
 
-```
+```html
 <eda-interface
   digital-asset-code="63fcecb5a7bd6165bbdd3cd0"
   asset-action="validate">
@@ -38,43 +38,41 @@ La interfaz de Easy Digital Assets usa de atributos personalizados para
 pasar los valores de configuración al Custom HTML Element. Por eso 
 se debe pasar cómo atributo cada parametro que se requiera.
 
-``` 
+```html
 <eda-interface parametro="valor"></eda-interface>
 ```
 
 La configuración de la Interfaz de EDA depende de la acción que esta vaya a realizar.
 
 ### Lista de Acciones
-|Parametro|Requerido|Valores|Uso|
------------------
-|asset-action|Sí|"validate" || "generate"|Metodo que se va a realizar la Interfaz de EDA|
-|Acciones Disponibles|
---------------------
-|Metodo|Nombre|Uso|
-------------
-|validate|Validar Activo|Valida un activo digital con los servicios de EDA|
-|generate|Generar Activo|Genera un activo digital con los servicios de EDA|
+Parametro|Requerido|Valores|Uso
+---|---|---|---
+asset-action|Sí|`validate` \|\| `generate`|Metodo que se va a realizar la Interfaz de EDA
 
+### Acciones Disponibles
+Metodo|Nombre|Uso
+---|---|---
+validate|Validar Activo|Valida un activo digital con los servicios de EDA
+generate|Generar Activo|Genera un activo digital con los servicios de EDA
 
 ### Lista de Parametros por Acción
 Cada acción puede tener parametros requeridos para su funcionamiento y parametros opcionales.
 
-|Validate|
------------------
-|Parametro|Requerido|Valores|Uso|
---------------------------------
-|digital-asset-code|Sí|Id de un activo digital|El Id del activo digital a verificar|
-|return-url|No|URL|URL a la que se retornara los datos del activo digital, una vez esté este verificado|
-|reload-on-return|No|Booleano|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital|
+### Validate
+Parametro|Requerido|Valores|Uso
+---|---|---|---
+digital-asset-code|Sí|Id de un activo digital|El Id del activo digital a verificar
+return-url|No|URL|URL a la que se retornara los datos del activo digital, una vez esté este verificado                                  |
+reload-on-return|No|Booleano|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
 
-|Generate|
-----------
-|Parametro|Requerido|Valores|Uso|
-----------------------------------
-|user-access-key|Sí|Llave de Acceso un Usuario de EDA|Llave de sesión vigente de un usuario activo de Easy Digitial Assets|
-|digital-asset-name|No|String|Nombre del activo digital que se va a generar|
-|return-url|No|URL|URL a la que se retornara los datos del activo digital, una vez esté este registrado|
-|reload-on-return|No|Booleano|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital|
+### Generate
+
+Parametro|Requerido|Valores|Uso
+---|---|---|---
+user-access-key|Sí|Llave de Acceso un Usuario de EDA|Llave de sesión vigente de un usuario activo de Easy Digitial Assets
+digital-asset-name|No|String|Nombre del activo digital que se va a generar
+return-url|No|URL|URL a la que se retornara los datos del activo digital, una vez esté este registrado
+reload-on-return|No|Booleano|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
 
 
 # Licencia
