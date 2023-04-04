@@ -19,7 +19,7 @@ Los cuales, variando por la acción a realizar, tienen el siguiente flujo de des
 
 Para usar esta interfaz solo necesitamos incluir en nuestro html el siguiente archivo Javascript.
 ```html
-<script src="https://cnd/eda-interface.js"></script>
+<script src="https://lineadecodigo.net/cdn/eda/eda-interface.js"></script>
 ```
 
 Una vez importado y incluido este script, podemos hacer uso dentro de nuestro html, cómo un elemento 
