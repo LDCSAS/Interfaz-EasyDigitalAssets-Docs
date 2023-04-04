@@ -76,3 +76,4 @@ reload-on-return|No|Booleano|Determina si se recarga la página web completa o s
 
 
 # Licencia
+MIT - 2023 Linea de Código SAS
