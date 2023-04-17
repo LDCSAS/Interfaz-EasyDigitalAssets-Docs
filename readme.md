@@ -32,6 +32,84 @@ normal, de la Interfaz de Easy Digital Assets. Un Ejemplo básico de validar act
 </eda-interface>
 ```
 
+También si es necesario, se puede incluir creando el elemento mismo desde Javascript.
+Solo ten en cuenta de definir `asset-action` antes de definir cualquier otro attributo.
+```javascript
+const edaInterface = document.createElement('eda-interface');
+edaInterface.setAttribute('asset-action', 'validate');
+edaInterface.setAttribute('digital-asset-code', '63fcecb5a7bd6165bbdd3cd0');
+```
+
+También apartir de JavaScript, se pueden cambiar los atributos de la Interfaz,
+este verificara que no haya ningún error con cada cambio, 
+si no hay errores recargara EDA con los cambios hechos.
+
+```html
+<eda-interface
+  id="eda-interface"
+  digital-asset-code="63fcecb5a7bd6165bbdd3cd0"
+  asset-action="validate">
+</eda-interface>
+```
+```javascript
+const edaInterface = document.getElementById('eda-interface');
+edaInterface.setAttribute('digital-asset-code', '{Nuevo Código activo digital}');
+```
+Una vez verificado que el Nuevo Código sea valido, se podra usar de nuevo la Interfaz de EDA,
+en caso de que no lo sea se puede volver a cambiar el código del Activo Digital hasta que esté sea valido.
+
+## Retorno de Datos
+
+Despues de completar una acción, la Interfaz de EDA puede retornar los datos del activo digital.
+Estos datos se pueden retornar por una redirección del navegador, pasandolos cómo un `queryParameter`, cambiando de página
+definida en `return-url`.
+```html
+<eda-interface
+  digital-aset-code="63fcecb5a7bd6165bbdd3cd0"
+  return-url="https://mypage/"
+  asset-action="validate">
+</eda-interface>
+```
+
+O pasar los datos a la misma página donde este la interfaz apartir de un `CustomEvent`. Agregando un `EventLister` a 
+`returnEda`.
+
+```html
+<eda-interface
+  id="eda-interface"
+  digital-asset-code="63fcecb5a7bd6165bbdd3cd0"
+  asset-action="validate">
+</eda-interface>
+```
+```javascript
+const edaInterface = document.getElementById('eda-interface');
+edaInterface.addEventListener('returnEda', (data) => {
+  console.log(data);
+});
+```
+### Modelo de Datos: Validate
+Valor|Tipo|Descripción
+---|---|---
+assetCode|`Codigo Activo Digital`|Código del Activo Digital
+assetName|`string`|Nombre del Activo Digital
+hash|`string`|Huella Digital o Hash del Activo Digital
+txId|`string`|Id de la transacción de Blockchain
+url|`URL`|URL de la transacción en la Blockchain
+createdAt|`date`|Fecha del momento de la creación del Activo Digital
+validated|`boolean`|Define si el activo digital fue validado
+method|`string`|Accíon de EDA realizada
+
+### Modelo de Datos: Generate
+Valor|Tipo|Descripción
+---|---|---
+assetCode|`string`|Código del Activo Digital
+assetName|`string`|Nombre del Activo Digital
+validateUrl|`EDA URL`|URL para validar el Activo Digital en EDA
+user|`Token Usuario de EDA`|Token del Usuario que Registro el Activo Digital
+method|`string`|Acción de EDA realizada
+
+__Los datos retornados no varian su contenido si son pasados por el `Custom Event` o por el `return-url`. Pero puede que cambie su formato__
+
 ## Configuración
 
 La interfaz de Easy Digital Assets usa de atributos personalizados para 
@@ -61,18 +139,22 @@ Cada acción puede tener parametros requeridos para su funcionamiento y parametr
 ### Validate
 Parametro|Requerido|Valores|Uso
 ---|---|---|---
-digital-asset-code|Sí|Id de un activo digital|El Id del activo digital a verificar
-return-url|No|URL|URL a la que se retornara los datos del activo digital, una vez esté este verificado                                  |
-reload-on-return|No|Booleano|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
+digital-asset-code|Sí|`Codigo Activo Digital`|El Id del activo digital a verificar
 
 ### Generate
-
 Parametro|Requerido|Valores|Uso
 ---|---|---|---
-user-access-key|Sí|Llave de Acceso un Usuario de EDA|Llave de sesión vigente de un usuario activo de Easy Digitial Assets
-digital-asset-name|No|String|Nombre del activo digital que se va a generar
-return-url|No|URL|URL a la que se retornara los datos del activo digital, una vez esté este registrado
-reload-on-return|No|Booleano|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
+user-access-key|Sí|`Token Usuario de EDA`|Llave de sesión vigente de un usuario activo de Easy Digitial Assets
+digital-asset-name|No|`String`|Nombre del activo digital que se va a generar
+
+### Parametros Generales (Disponibles para cualquier Acción)
+Parametro|Requerido|Valores|Uso
+---|---|---|---
+return-url|No|`URL`|URL a la que se retornara los datos del activo digital, una vez la acción sea completada
+reload-on-return|No|`Booleano`|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
+message-url|No|`URL`|URL con la que se va a comunicar EDA apartir de mensajes. Generalmente, por predefinido, la misma URL donde se esta usando la Interfaz
+close-on-return|No|`Booleano`|Determina si se cierra el Modal una vez se complete la acción de EDA
+dev-env|No|`local` \|\| `sandbox` \|\| `production`|Determina si va a usar recursos, cómo iconos, styles y otros, locales u remotos.
 
 
 # Licencia
