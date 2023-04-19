@@ -137,26 +137,26 @@ generate|Generar Activo|Genera un activo digital con los servicios de EDA
 Cada acción puede tener parametros requeridos para su funcionamiento y parametros opcionales.
 
 ### Validate
-Parametro|Requerido|Valores|Uso
----|---|---|---
-digital-asset-code|Sí|`Codigo Activo Digital`|El Id del activo digital a verificar
+Parametro|Requerido|Atributo No Compatible|Valores|Uso
+---|---|---|---|---
+digital-asset-code|Sí||`Codigo Activo Digital`|El Id del activo digital a verificar
 
 ### Generate
-Parametro|Requerido|Valores|Uso
----|---|---|---
-user-access-key|Sí|`Token Usuario de EDA`|Llave de sesión vigente de un usuario activo de Easy Digitial Assets
-digital-asset-name|No|`string`|Determina el nombre del activo digital que se va a generar
-restart-on-return|No|`boolean`|Determina si se va a recargar EDA para crear otro activo digital una vez se retorne los datos del `CustomEvent`
+Parametro|Requerido|Atributo No Compatible|Valores|Uso
+---|---|---|---|---
+user-access-key|Sí||`Token Usuario de EDA`|Llave de sesión vigente de un usuario activo de Easy Digitial Assets
+digital-asset-name|No||`string`|Determina el nombre del activo digital que se va a generar
+restart-on-return|No|`restart-on-close` `reload-on-return` `close-on-return`|`boolean`|Determina si se va a recargar EDA para crear otro activo digital una vez se retorne los datos del `CustomEvent`
 
 ### Parametros Generales (Disponibles para cualquier Acción)
-Parametro|Requerido|Valores|Uso
----|---|---|---
-interface-id|Sí|`string`|ID único de la interfaz, si no se pasa un valor, este se generará automáticamente. Lanzara error si hay una interfaz con el mismo ID
-return-url|No|`URL`|URL a la que se retornara los datos del activo digital, una vez la acción sea completada
-reload-on-return|No|`boolean`|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
-close-on-return|No|`boolean`|Determina si se cierra el Modal una vez se complete la acción de EDA
-restart-on-close|No|`boolean`|Determina si se va a recargar EDA si el modal se llega a cerrar
-dev-env|No|`local` \|\| `sandbox` \|\| `production`|Determina si va a usar recursos, cómo iconos y otros, locales u remotos.
+Parametro|Requerido|Atributo No Compatible|Valores|Uso
+---|---|---|---|---
+interface-id|Sí||`string`|ID único de la interfaz, si no se pasa un valor, este se generará automáticamente. Lanzara error si hay una interfaz con el mismo ID
+return-url|No||`URL`|URL a la que se retornara los datos del activo digital, una vez la acción sea completada
+reload-on-return|No|`close-on-return` `restart-on-return`|`boolean`|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
+close-on-return|No|`reload-on-return` `restart-on-return`|`boolean`|Determina si se cierra el Modal una vez se complete la acción de EDA
+restart-on-close|No|`restart-on-return`|`boolean`|Determina si se va a recargar EDA si el modal se llega a cerrar
+dev-env|No||`local` \|\| `sandbox` \|\| `production`|Determina si va a usar recursos, cómo iconos y otros, locales u remotos.
 
 
 # Licencia
