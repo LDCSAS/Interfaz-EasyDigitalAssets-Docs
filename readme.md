@@ -33,7 +33,7 @@ normal, de la Interfaz de Easy Digital Assets. Un Ejemplo básico de validar act
 ```
 
 También si es necesario, se puede incluir creando el elemento mismo desde Javascript.
-Solo ten en cuenta de definir `asset-action` antes de definir cualquier otro attributo.
+Solo va a iniciar su acción una vez se hayan definido todos los atributos requeridos.
 ```javascript
 const edaInterface = document.createElement('eda-interface');
 edaInterface.setAttribute('asset-action', 'validate');
@@ -145,16 +145,18 @@ digital-asset-code|Sí|`Codigo Activo Digital`|El Id del activo digital a verifi
 Parametro|Requerido|Valores|Uso
 ---|---|---|---
 user-access-key|Sí|`Token Usuario de EDA`|Llave de sesión vigente de un usuario activo de Easy Digitial Assets
-digital-asset-name|No|`String`|Nombre del activo digital que se va a generar
+digital-asset-name|No|`string`|Determina el nombre del activo digital que se va a generar
+restart-on-return|No|`boolean`|Determina si se va a recargar EDA para crear otro activo digital una vez se retorne los datos del `CustomEvent`
 
 ### Parametros Generales (Disponibles para cualquier Acción)
 Parametro|Requerido|Valores|Uso
 ---|---|---|---
+interface-id|Sí|`string`|ID único de la interfaz, si no se pasa un valor, este se generará automáticamente. Lanzara error si hay una interfaz con el mismo ID
 return-url|No|`URL`|URL a la que se retornara los datos del activo digital, una vez la acción sea completada
-reload-on-return|No|`Booleano`|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
-message-url|No|`URL`|URL con la que se va a comunicar EDA apartir de mensajes. Generalmente, por predefinido, la misma URL donde se esta usando la Interfaz
-close-on-return|No|`Booleano`|Determina si se cierra el Modal una vez se complete la acción de EDA
-dev-env|No|`local` \|\| `sandbox` \|\| `production`|Determina si va a usar recursos, cómo iconos, styles y otros, locales u remotos.
+reload-on-return|No|`boolean`|Determina si se recarga la página web completa o solo el modal de EDA, al momento de retornar los datos del activo digital
+close-on-return|No|`boolean`|Determina si se cierra el Modal una vez se complete la acción de EDA
+restart-on-close|No|`boolean`|Determina si se va a recargar EDA si el modal se llega a cerrar
+dev-env|No|`local` \|\| `sandbox` \|\| `production`|Determina si va a usar recursos, cómo iconos y otros, locales u remotos.
 
 
 # Licencia
