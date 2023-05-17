@@ -4,7 +4,7 @@ Custom HTML Element de uso sencillo para poder acceder a los
 servicios de Easy Digital Assets. Desarrollado por Línea de Código SAS.
 
 ## Índice 
-1. [Funcionamiento](/service-eda#functionality)
+1. [Funcionamiento](/service-eda#funcionamiento)
     - [Acciones de EDA](/service-eda#functionality-actions)
       - [Generar Activos Digitales](/service-eda#functionality-actions-generate)
       - [Validar Activos Digitales](/service-eda#functionality-actions-validate)
@@ -25,12 +25,12 @@ servicios de Easy Digital Assets. Desarrollado por Línea de Código SAS.
 5. [Contacto](/service-eda#contact)
 6. [Licencias](/service-eda#licence)
 
-# <span id="functionality">Funcionamiento</span>
+# [Funcionamiento]
 
 La interfaz va a poder acceder a los servicios de Easy Digital Assets. 
 Estos estan definidos cómo `Acciones de EDA`.
 
-## <span id="functionality-actions">Acciones de EDA</span>
+## <a id="functionality-actions">Acciones de EDA</a>
 
 Las `Acciones de EDA` son diferentes servicios que EDA puede ofrecer a travez de la interfaz.
 Estas son necesarias para definir y configurar la interfaz para que su funcionamiento sea correcto.
