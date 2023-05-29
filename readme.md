@@ -4,33 +4,33 @@ Custom HTML Element de uso sencillo para poder acceder a los
 servicios de Easy Digital Assets. Desarrollado por Línea de Código SAS.
 
 ## Índice 
-1. [Funcionamiento](/service-eda#funcionamiento)
-    - [Acciones de EDA](/service-eda#functionality-actions)
-      - [Generar Activos Digitales](/service-eda#functionality-actions-generate)
-      - [Validar Activos Digitales](/service-eda#functionality-actions-validate)
-2. [Descarga](/service-eda#download)
-3. [Uso](/service-eda#usage)
-    - [Implementación con HTML](/service-eda#usage-html)
-    - [Implementación con JS](/service-eda#usage-js)
-    - [Retorno de Datos](/service-eda#usage-dataReturn)
-      - [Retorno por returnEda](/service-eda#usage-dataReturn-returnEda)
-      - [Retorno por URL](/service-eda#usage-dataReturn-url)
-      - [Datos de Retorno de Generate](/service-eda#usage-dataReturn-generateModel)
-      - [Datos de Retorno de Validate](/service-eda#usage-dataReturn-validateModel)
-4. [Configuración](/service-eda#config)
-    - [Cambiar o Asignar Parametros](/service-eda#config-params-howTo)
-    - [Parametros Para Generate - Generar](/service-eda#config-params-generate)
-    - [Parametros Para Validate - Validar](/service-eda#config-params-validate)
-    - [Parametros Generales - Ambas Acciones](/service-eda#config-params-general)
-5. [Contacto](/service-eda#contact)
-6. [Licencias](/service-eda#licence)
+1. [Funcionamiento](#funcionamiento)
+    - [Acciones de EDA](#acciones-de-eda)
+      - [Generar Activos Digitales](#generate-generar-activos-digitales)
+      - [Validar Activos Digitales](#validate-validar-activos-digitales)
+2. [Descarga](#descarga)
+3. [Uso](#uso)
+    - [Implementación con HTML](#implementación-con-html)
+    - [Implementación con JS](#implementación-con-javascript)
+    - [Retorno de Datos](#retorno-de-datos)
+      - [Retorno por returnEda](#retorno-por-returneda)
+      - [Retorno por URL](#retorno-por-return-url)
+      - [Datos de Retorno de Generate](#modelo-de-datos-retorno-generate)
+      - [Datos de Retorno de Validate](#modelo-de-datos-retorno-validate)
+4. [Configuración](#configuración)
+    - [Cambiar o Asignar Parametros](#cómo-usar-parametros-en-la-interfaz-de-eda)
+    - [Parametros Para Generate - Generar](#parametros-de-generate)
+    - [Parametros Para Validate - Validar](#parametros-de-validate)
+    - [Parametros Generales - Ambas Acciones](#parametros-generales)
+5. [Contacto](#contacto)
+6. [Licencias](#licencia)
 
-# [Funcionamiento]
+# Funcionamiento
 
 La interfaz va a poder acceder a los servicios de Easy Digital Assets. 
 Estos estan definidos cómo `Acciones de EDA`.
 
-## <a id="functionality-actions">Acciones de EDA</a>
+## Acciones de EDA
 
 Las `Acciones de EDA` son diferentes servicios que EDA puede ofrecer a travez de la interfaz.
 Estas son necesarias para definir y configurar la interfaz para que su funcionamiento sea correcto.
