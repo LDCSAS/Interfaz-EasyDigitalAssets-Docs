@@ -6,8 +6,8 @@ servicios de Easy Digital Assets. Desarrollado por Línea de Código SAS.
 ## Índice 
 1. [Funcionamiento](#funcionamiento)
     - [Acciones de EDA](#acciones-de-eda)
-      - [Generar Activos Digitales](#generate-generar-activos-digitales)
-      - [Validar Activos Digitales](#validate-validar-activos-digitales)
+      - [Generar Activos Digitales](#generar-activos-digitales)
+      - [Validar Activos Digitales](#validar-activos-digitales)
 2. [Descarga](#descarga)
 3. [Uso](#uso)
     - [Implementación con HTML](#implementación-con-html)
@@ -15,13 +15,13 @@ servicios de Easy Digital Assets. Desarrollado por Línea de Código SAS.
     - [Retorno de Datos](#retorno-de-datos)
       - [Retorno por returnEda](#retorno-por-returneda)
       - [Retorno por URL](#retorno-por-return-url)
-      - [Datos de Retorno de Generate](#modelo-de-datos-retorno-generate)
-      - [Datos de Retorno de Validate](#modelo-de-datos-retorno-validate)
+      - [Datos de Retorno de Generate](#datos-de-retorno-generate)
+      - [Datos de Retorno de Validate](#datos-de-retorno-validate)
 4. [Configuración](#configuración)
     - [Cambiar o Asignar Parametros](#cómo-usar-parametros-en-la-interfaz-de-eda)
-    - [Parametros Para Generate - Generar](#parametros-de-generate)
-    - [Parametros Para Validate - Validar](#parametros-de-validate)
-    - [Parametros Generales - Ambas Acciones](#parametros-generales)
+    - [Parametros Para Generate](#parametros-de-generate)
+    - [Parametros Para Validate](#parametros-de-validate)
+    - [Parametros Generales](#parametros-generales)
 5. [Contacto](#contacto)
 6. [Licencias](#licencia)
 
@@ -36,7 +36,8 @@ Las `Acciones de EDA` son diferentes servicios que EDA puede ofrecer a travez de
 Estas son necesarias para definir y configurar la interfaz para que su funcionamiento sea correcto.
 Se tienen disponibles las Siguientes Acciones:
 
-### <span id="functionality-actions-generate">`Generate` - Generar Activos Digitales</span>
+### Generar Activos Digitales
+#### `Generate`
 
 Nos permite generar un Activo Digital ingresando su nombre, y el archivo de esté para
 generar su huella digital, o hash. 
@@ -44,7 +45,8 @@ generar su huella digital, o hash.
 Una vez generado, nos mostrará el certificado del registro en la blockchain con los datos generados y 
 ingresados. Estos datos se retornaran por un medio definido en la interfaz.
 
-### <span id="functionality-actions-validate">`Validate` - Validar Activos Digitales</span>
+### Validar Activos Digitales
+#### `Validate`
 
 Nos permite verificar apartir de su Código. Si un Activo Digital esta registrado en la Blockchain, los datos que se subieron a la 
 Blockchain, y el certificado del registro del Activo Digital. 
@@ -54,18 +56,18 @@ con la huella digital registrada en la Blockchain.
 
 Una vez verificado que esté Registrado y su Huella Digital. Se retornara los datos del Activo Digital por un medio definido en la interfaz.
 
-# <span id="download">Descarga</span>
+# Descarga
 Para implementar la interfaz se debe agregar en el Body del HTML el siguiente archivo Javascript.
 ```html
 <script src="https://lineadecodigo.net/cdn/eda/eda-interface.js"></script>
 ```
 
-# <span id="usage">Uso</span>
+# Uso
 
 Una vez agregado el Script, se puede usar el [Custom Element](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) de 
 `eda-interface` para realizar una `Acción de EDA`.
 
-### <span id="usage-html">Implementación con HTML</span>
+### Implementación con HTML
 La Interfaz se puede crear directamente desde el HTML, usando el elemento `<eda-interface></eda-interface>`.
 Además de agregar los parametros necesarios para su funcionamiento.
 
@@ -76,7 +78,7 @@ Además de agregar los parametros necesarios para su funcionamiento.
 </eda-interface>
 ```
 
-### <span id="usage-js">Implementación con Javascript</span>
+### Implementación con Javascript
 La Interfaz se puede crear usando `document.createElement` desde un Script, generando un elemento 
 `eda-interface`. Además de agregar sus parametros necesarios para su funcionamiento.
 
@@ -86,12 +88,12 @@ edaInterface.setAttribute('asset-action', 'validate');
 edaInterface.setAttribute('digital-asset-code', '63fcecb5a7bd6165bbdd3cd0');
 ```
 
-## <span id="usage-dataReturn">Retorno de Datos</span>
+## Retorno de Datos
 
 Después de completar una `Acción de EDA` la Interfaz retornara los datos de está mediante un medio 
 especificado en su (configuración)[#config-params-general]. Los medios de retorno son:
 
-### <span id="usage-dataReturn-returnEda">Retorno por `returnEda`</span>
+### Retorno por `returnEda`
 
 Este medio nos permite usar los datos retornados en la misma página web donde se implemente al interfaz de EDA.
 Dando una mejor integración en la página web.
@@ -117,7 +119,7 @@ Los datos que se retornarán dependran de la `Acción de EDA` que se haya realiz
 - [Datos de `Generate`](#usage-dataReturn-generateModel)
 - [Datos de `Validate`](#usage-dataReturn-validateModel)
 
-### <span id="usage-dataReturn-url">Retorno por `return-url`</span>
+### Retorno por `return-url`
 
 Este medio nos permite enviar los datos a una URL, definida en el [parametro](#config-params-howTo) mediante un método HTTP GET, 
 cuando el usuario quiera retornar al sitio web dandole click a un botón.
@@ -134,7 +136,7 @@ Los datos que se retornarán dependran de la `Acción de EDA` que se haya realiz
 
 __Los datos retornados por `return-url` no varian frente a `returnEda`. Pero puede que cambie su formato__
   
-### <span id="usage-dataReturn-generateModel">Modelo de Datos Retorno: `Generate`</span>
+### Datos de Retorno Generate
 Valor|Tipo|Descripción
 ---|---|---
 assetCode|`string`|Código del Activo Digital
@@ -147,7 +149,7 @@ user|`Token Usuario de EDA`|Token del Usuario que Registro el Activo Digital
 createdAt|`date`|Fecha de creación del Activo Digital
 method|`string`|Acción de EDA realizada
 
-### <span id="usage-dataReturn-validateModel">Modelo de Datos Retorno: `Validate`</span>
+### Datos de Retorno Validate
 Valor|Tipo|Descripción
 ---|---|---
 assetCode|`Codigo Activo Digital`|Código del Activo Digital
@@ -159,14 +161,14 @@ createdAt|`date`|Fecha de creación del Activo Digital
 validated|`boolean`|Define si el activo digital fue validado
 method|`string`|Accíon de EDA realizada
 
-# <span id="config">Configuración</span>
+# Configuración
 
 La Interfaz de EDA tiene que ser configurada para su uso adecuado.
 __Principalmente definir la `Acción de EDA`__. 
 Esta configuración se hace pasando parametros al Elemento de la interfaz.
 Estos parametros son customizados, creados usando los [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)
 
-## <span id="config-params-howTo">Cómo usar Parametros en la Interfaz de EDA</span>
+## Cómo usar Parametros en la Interfaz de EDA
 
 Definir los parametros de la interfaz no tienen gran diferencia a su forma de 
 definirlos en un Elemento HTML cualquiera.
@@ -198,19 +200,20 @@ __Cada Acción tiene Parametros Obligatorios, sin estos, la interfaz no va a fun
 Hay una lista de Parametros Generales que son permitidos en cualquier `Acción de EDA`, principalmente sobre 
 el uso y interacción de la Interfaz.
 
-### <span id="config-params-generate">Parametros de `Generate`</span>
+### Parametros de Generate
 Parametro|Requerido|Atributo No Compatible|Valores|Uso
 ---|---|---|---|---
 user-access-key|Sí||`Token Usuario de EDA`|Llave de sesión vigente de un usuario activo de Easy Digitial Assets
 digital-asset-name|No||`string`|Determina el nombre predefinido del activo digital que se va a generar
 restart-on-return|No|`restart-on-close` `reload-on-return` `close-on-return`|`boolean`|Determina si se va a recargar EDA para crear otro activo digital una vez se retorne los datos a `returnEda`
 
-### <span id="config-params-validate">Parametros de `Validate`</span>
+### Parametros de Validate
 Parametro|Requerido|Atributo No Compatible|Valores|Uso
 ---|---|---|---|---
 digital-asset-code|Sí||`Codigo Activo Digital`|El Id del activo digital a verificar
 
-### <span id="config-params-general">Parametros Generales (Disponibles para cualquier Acción)</span>
+### Parametros Generales
+**Disponibles para cualquier acción**
 Parametro|Requerido|Atributo No Compatible|Valores|Uso
 ---|---|---|---|---
 interface-id|Sí||`string`|ID único de la interfaz, si no se pasa un valor, este se generará automáticamente. Lanzara error si hay una interfaz con el mismo ID
@@ -221,7 +224,7 @@ close-on-return|No|`reload-on-return` `restart-on-return`|`boolean`|Determina si
 restart-on-close|No|`restart-on-return`|`boolean`|Determina si se va a recargar EDA si el modal se llega a cerrar
 dev-env|No||`local` \|\| `sandbox` \|\| `production`|Determina si va a usar recursos, cómo iconos y otros, locales u remotos.
 
-# <span id="contact">Contacto</span>
+# Contacto
 
 - [Página Web de LDC](https://lineadecodigo.net/home)
 - Email: ventas@lineadecodigo.net
@@ -229,5 +232,5 @@ dev-env|No||`local` \|\| `sandbox` \|\| `production`|Determina si va a usar recu
     - +57 301-641-5626
     - +57 304-482-7833
 
-## <span id="licence">Licencia</span>
+## Licencia
 MIT - 2023 Linea de Código SAS
