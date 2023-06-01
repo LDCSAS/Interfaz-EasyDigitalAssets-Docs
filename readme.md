@@ -112,9 +112,13 @@ El cual va a ser ejecutado cuando EDA le envíe una señal de completación a la
 ```javascript
 const edaInterface = document.getElementById('eda-interface');
 edaInterface.addEventListener('returnEda', (data) => {
-  console.log(data);
+  console.log(data.detail.VALOR_RETORNO);
 });
 ```
+
+**Los datos van a ser retornados mediante un `CustomEvent`, haciendo qué los datos esten almacenados 
+dentro de la propiedad `detail` de la variable de retorno del evento.**
+
 Los datos que se retornarán dependran de la `Acción de EDA` que se haya realizado.
 - [Datos de `Generate`](#usage-dataReturn-generateModel)
 - [Datos de `Validate`](#usage-dataReturn-validateModel)
